@@ -23,7 +23,15 @@ namespace codewars
         }
         public static List<int> RemoveSmallest(List<int> numbers)
         {
-            // Good Luck!
+            int min = 0;
+            for (int i=0;i<numbers.Count;i++)
+            {
+                if (numbers[i] < numbers[min])
+                    min = i;
+            }
+            if(numbers.Count>0)
+                numbers.RemoveAt(min);
+            return numbers;
         }
     }
 }
