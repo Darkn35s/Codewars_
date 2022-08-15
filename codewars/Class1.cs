@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace codewars
@@ -24,26 +25,35 @@ namespace codewars
             return (int)(1 + (n - 1) % 9);
         }
     }
-
-    public class Kata
+    public class BinaryRegex
     {
-        public static bool IsIsogram(string str)
-        {
-            List<char> lst=new List<char>();
-            foreach(char ch in str)
-            {
-                if (lst.Contains(ch)) return false;
-                lst.Add(ch);
-            }
-            return true;
-        }
 
-        public static string ToCamelCase(string str)
+        public static bool MultipleOf3(string regx)
         {
-            return str;
+            double result = 0;
+            for(int i = 0; i< regx.Length; i++)
+            {
+                if(regx[i] == '0' || regx[i] == '1')
+                    result += (regx[i] - '0') * Math.Pow(2, i);
+                else
+                    return false;   
+            }
+            if (result % 3 == 0)
+                return true;
+            return false;  
         }
     }
+
+
+    public class ListFilterer
+    {
+        public static IEnumerable<int> GetIntegersFromList(List<object> listOfItems)
+        {
+            return null;
+        }
+    }
+
 }
 
 
-}
+
