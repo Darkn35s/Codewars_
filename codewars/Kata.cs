@@ -9,6 +9,7 @@
                 return false;
             for (int i = 0; i < 4; i++)
             {
+                Console.WriteLine(data[i]+"-");
                 if (data[i].Length > 3 || data[i].Length < 1) 
                     return false;
                 
@@ -16,10 +17,16 @@
                     return false;
 
                 for (int j = 0; j < data[i].Length; j++)
-                    if ((data[i][j] + 0) < 48 && (data[i][j] + 0) > 57)
+                    if ((data[i][j] + 0) < 48 || (data[i][j] + 0) > 57)
                         return false;
-                if (Int32.Parse(data[i]) > 255) 
-                    return false; 
+                try
+                {
+
+                    if ((Int32.Parse(data[i]) > 255)||(Int32.Parse(data[i]) < 0))
+                        return false;
+                }
+                catch { return false; }
+                   
                     
             }
             return true;  
@@ -66,7 +73,31 @@
            output += "1";
            return output;
         }
+
+
+
+        public static string AlphabetPosition(string text)
+        {
+            string numtxt = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if ((text[i] + 0) > 64 && (text[i] + 0) < 91)
+                {
+                    numtxt += text[i] - 64+" ";
+                }
+                if ((text[i] + 0) > 96 && (text[i] + 0) < 123)
+                {
+                    numtxt += text[i] - 96+" ";
+                }
+               
+            }
+            if (numtxt.Length > 0)
+                numtxt = numtxt.Remove(numtxt.Length - 1);
+            return numtxt;
+        }
     }
+
+    
 
 }
 
